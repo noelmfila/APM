@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './product/product-list.component';
 import { ProductDetailComponent } from './product/product-detail.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -24,6 +25,14 @@ import { ProductDetailComponent } from './product/product-detail.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    RouterModule.forRoot([
+      {path: 'products', component: ProductListComponent},
+      {path: 'products/:id', component: ProductDetailComponent},
+      {path: 'welcome', component: WelcomeComponent},
+      {path: '', redirectTo: 'welcome', pathMatch: 'full'},
+      {path: '**', redirectTo: 'Welcome', pathMatch: 'full'}
+
+    ])
   ],
   bootstrap: [AppComponent]
 })
